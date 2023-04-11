@@ -46,3 +46,5 @@ Assets/StreamingAssets/crashlytics-build.properties
 
 *.log
 
+Assets/_Project/Scripts/Utility
+Assets/_Project/Scripts/Toolkit
