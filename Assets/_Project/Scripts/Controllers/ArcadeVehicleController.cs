@@ -6,8 +6,6 @@ using UnityEngine;
 public class ArcadeVehicleController : MonoBehaviour
 {
 
-    private void OnDisable() => CarIndicator.allCarControllers.Remove(this);
-
     private void OnValidate() => CarIndicator.allCarControllers.Add(this);
 
 
@@ -59,8 +57,8 @@ public class ArcadeVehicleController : MonoBehaviour
     }
     private void Update()
     {
-        horizontalInput = Input.GetAxis("Horizontal"); //turning input
-        verticalInput = Input.GetAxis("Vertical");     //accelaration input
+        horizontalInput = UltimateJoystick.GetHorizontalAxis("Movement"); //turning input
+        verticalInput = UltimateJoystick.GetVerticalAxis("Movement");     //accelaration input
         Visuals();
         AudioManager();
 
