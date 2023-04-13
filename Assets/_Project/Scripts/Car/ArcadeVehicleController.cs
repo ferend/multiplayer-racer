@@ -1,7 +1,7 @@
 using Toolkit;
 using UnityEngine;
 
-namespace _Project.Scripts.Controllers
+namespace _Project.Scripts.Car
 {
     public class ArcadeVehicleController : MonoBehaviour
     {

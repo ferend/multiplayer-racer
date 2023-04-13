@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using _Project.Scripts.Controllers;
+using _Project.Scripts.Car;
 using UnityEngine;
 
 public class SkidMarks : MonoBehaviour

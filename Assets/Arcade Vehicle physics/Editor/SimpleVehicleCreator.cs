@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 using System;
-using _Project.Scripts.Controllers;
+using _Project.Scripts.Car;
 
 public class ArcadeVehicleCreator : EditorWindow
 {
