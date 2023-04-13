@@ -10967,7 +10967,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2353892803749331805}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.8859999, y: 0.35300004, z: 1.175}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -11257,12 +11257,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementMode: 0
-  GroundCheck: 1
+  groundCheck: 0
   drivableSurface:
     serializedVersion: 2
     m_Bits: 1
-  MaxSpeed: 80
-  accelaration: 18
+  maxSpeed: 80
+  acceleration: 18
   turn: 10
   gravity: 7
   rb: {fileID: 2353892805266359635}
@@ -11272,21 +11272,21 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
-      inSlope: 4
-      outSlope: 4
+      value: 0
+      inSlope: 1
+      outSlope: 1
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.33333334
+      outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 5
-      inSlope: 4
-      outSlope: 4
+      value: 1
+      inSlope: 1
+      outSlope: 1
       tangentMode: 34
       weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -11334,19 +11334,19 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   frictionMaterial: {fileID: 13400000, guid: ce8f2e0169709cc4da4d8131aec6cef1, type: 2}
-  BodyMesh: {fileID: 2353892805164060414}
-  FrontWheels:
+  bodyMesh: {fileID: 2353892805164060414}
+  frontWheels:
   - {fileID: 2353892803749331804}
   - {fileID: 2353892805475547674}
-  RearWheels:
+  rearWheels:
   - {fileID: 2353892803445754670}
   - {fileID: 2353892803890088259}
   carVelocity: {x: 0, y: 0, z: 0}
-  BodyTilt: 10
+  bodyTilt: 0
   engineSound: {fileID: 2353892804982738518}
   minPitch: 0.3
-  MaxPitch: 3
-  SkidSound: {fileID: 2353892804982738519}
+  maxPitch: 3
+  skidSound: {fileID: 2353892804982738519}
   skidWidth: 0.13985014
 --- !u!54 &2353892804982738517
 Rigidbody:
@@ -11377,9 +11377,9 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 0b2844ba13c61eb459484abc96bde242, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 0.3
   Loop: 1
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -21422,7 +21422,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2353892805475547675}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.884, y: 0.35300004, z: 1.172}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
