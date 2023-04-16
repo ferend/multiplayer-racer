@@ -1,9 +1,10 @@
 using Toolkit;
 using UnityEngine;
+using Unity.Netcode;
 
 namespace _Project.Scripts.Car
 {
-    public class ArcadeVehicleController : MonoBehaviour
+    public class ArcadeVehicleController : NetworkBehaviour
     {
 
         private void OnValidate() => CarIndicator.allCarControllers.Add(this);
@@ -56,6 +57,7 @@ namespace _Project.Scripts.Car
         }
         private void Update()
         {
+            if(!IsOwner) return;
             horizontalInput = UltimateJoystick.GetHorizontalAxis("Movement"); //turning input
             verticalInput = UltimateJoystick.GetVerticalAxis("Movement");     //accelaration input
             Visuals();

@@ -6,8 +6,6 @@ namespace _Project.Scripts.UI
     public abstract class UIScreen : MonoBehaviour
     {
         private CanvasGroup _canvasGroup;
-        protected float openDuration = 0.5F;
-        protected float closeDuration = 0.5F;
 
         private void Awake()
         {
@@ -18,6 +16,7 @@ namespace _Project.Scripts.UI
         {
             OnScreenOpen();
             gameObject.SetActive(true);
+            _canvasGroup.alpha = 1;
             _canvasGroup.interactable = true;
             _canvasGroup.blocksRaycasts = true;
         }
@@ -27,6 +26,7 @@ namespace _Project.Scripts.UI
             OnScreenClose();
             _canvasGroup.interactable = false;
             _canvasGroup.blocksRaycasts = false;
+            _canvasGroup.alpha = 0;
         }
 
         protected abstract void OnScreenOpen();

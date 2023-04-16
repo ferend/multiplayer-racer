@@ -15,7 +15,7 @@ using UnityEngine.SceneManagement;
         [SerializeField] private CreateLobbyScreen _createScreen;
         [SerializeField] private RoomPanel _roomScreen;
         [SerializeField] private PlayerHUD _playerScreen;
-        [SerializeField] private GameObject _lobbyUiCamera;
+        [SerializeField] private Camera _lobbyUiCamera;
         
         private void Start() 
         {
@@ -218,8 +218,8 @@ using UnityEngine.SceneManagement;
             await Matchmaking.LockLobby();
             
             //NetworkManager.Singleton.SceneManager.LoadScene("Game", LoadSceneMode.Single);
-            
-            _lobbyUiCamera.SetActive(false);
+
+            _lobbyUiCamera.enabled = false;
             _mainLobbyScreen.ClosePopup();
             _createScreen.ClosePopup();
             _roomScreen.ClosePopup();

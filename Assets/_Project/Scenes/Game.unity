@@ -295,7 +295,7 @@ MonoBehaviour:
   _createScreen: {fileID: 1784956508915535324}
   _roomScreen: {fileID: 5476032957648197932}
   _playerScreen: {fileID: 1101272666}
-  _lobbyUiCamera: {fileID: 638666930}
+  _lobbyUiCamera: {fileID: 638666932}
 --- !u!1 &490269351
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,6 +382,7 @@ GameObject:
   m_Component:
   - component: {fileID: 638666933}
   - component: {fileID: 638666932}
+  - component: {fileID: 638666934}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -447,6 +448,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &638666934
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638666930}
+  m_Enabled: 1
 --- !u!1 &658478666
 GameObject:
   m_ObjectHideFlags: 0
