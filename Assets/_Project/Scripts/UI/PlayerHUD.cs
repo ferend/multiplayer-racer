@@ -8,12 +8,11 @@ namespace _Project.Scripts.UI
         [SerializeField] private GameObject _movementJoystick; 
         protected override void OnScreenOpen()
         {
-            throw new System.NotImplementedException();
+           
         }
 
         protected override void OnScreenClose()
         {
-            throw new System.NotImplementedException();
         }
 
         public void ExitGameButton()
