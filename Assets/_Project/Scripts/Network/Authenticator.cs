@@ -16,7 +16,7 @@ namespace _Project.Scripts.Network
     }
     
     public static class Authentication {
-        private static string PlayerId { get; set; }
+        public static string PlayerId { get; set; }
 
         public static async Task Login() {
             if (UnityServices.State == ServicesInitializationState.Uninitialized) {
