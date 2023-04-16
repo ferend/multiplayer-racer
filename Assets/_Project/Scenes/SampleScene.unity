@@ -696,7 +696,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2034488346}
+  - {fileID: 2014649581}
+  - {fileID: 936398939}
   m_Father: {fileID: 1962259215}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -737,7 +738,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &936398939
 RectTransform:
   m_ObjectHideFlags: 0
@@ -745,13 +746,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 936398938}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1843917460}
-  m_Father: {fileID: 1962259215}
+  m_Father: {fileID: 879612821}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1194,6 +1195,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1212827847
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1212827848}
+  m_Layer: 7
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1212827848
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212827847}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.18, z: -0.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2353892804982738514}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1252854652
 GameObject:
   m_ObjectHideFlags: 0
@@ -1631,7 +1663,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 879612821}
-  - {fileID: 936398939}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1640,6 +1671,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!224 &2014649581 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 22464756, guid: 4adbe3ac910c42e4883b0170504cf426, type: 3}
+  m_PrefabInstance: {fileID: 2034488345}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2034488345
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1757,11 +1793,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4adbe3ac910c42e4883b0170504cf426, type: 3}
---- !u!224 &2034488346 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 22464756, guid: 4adbe3ac910c42e4883b0170504cf426, type: 3}
-  m_PrefabInstance: {fileID: 2034488345}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &57436028601783368
 GameObject:
   m_ObjectHideFlags: 0
@@ -12021,7 +12052,6 @@ GameObject:
   - component: {fileID: 2353892804982738517}
   - component: {fileID: 2353892804982738518}
   - component: {fileID: 2353892804982738519}
-  - component: {fileID: 2353892804982738520}
   m_Layer: 7
   m_Name: Sedan car
   m_TagString: Untagged
@@ -12044,6 +12074,7 @@ Transform:
   - {fileID: 2353892805266359632}
   - {fileID: 2353892803798564270}
   - {fileID: 963194228}
+  - {fileID: 1212827848}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12372,19 +12403,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2353892804982738520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2353892804982738504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acd12e51209b01942a866e5af8981217, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _carBullet: {fileID: 0}
 --- !u!114 &2353892805062016065
 MonoBehaviour:
   m_ObjectHideFlags: 0

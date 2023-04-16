@@ -60,7 +60,6 @@ namespace _Project.Scripts.Car
             verticalInput = UltimateJoystick.GetVerticalAxis("Movement");     //accelaration input
             Visuals();
             AudioManager();
-
         }
 
 
