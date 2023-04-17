@@ -20046,6 +20046,7 @@ GameObject:
   - component: {fileID: 5291503810071584083}
   - component: {fileID: 7764912059428580540}
   - component: {fileID: 462360029460762885}
+  - component: {fileID: 93549108024724773}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -20411,7 +20412,7 @@ MonoBehaviour:
   GlobalObjectIdHash: 951099334
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!114 &462360029460762885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20424,6 +20425,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4308f8a01fb059645a9082c15c252e60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &93549108024724773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5291503810071584076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e907fd9b6b0c1624b9299d072809dc07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCamera: {fileID: 7621647087800712823}
+  _target: {fileID: 5291503810071584086}
+  _offset: {x: 0, y: 6, z: -8}
 --- !u!1 &6004678718792887218
 GameObject:
   m_ObjectHideFlags: 0
@@ -20747,7 +20763,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7621647087800712816}
   - component: {fileID: 7621647087800712823}
-  - component: {fileID: 7621647087800712817}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: Untagged
@@ -20813,21 +20828,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &7621647087800712817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7621647087800712821}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e907fd9b6b0c1624b9299d072809dc07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerCamera: {fileID: 7621647087800712823}
-  _target: {fileID: 5291503810071584086}
-  _offset: {x: 0, y: 6, z: -8}
 --- !u!1 &7795222583752276420
 GameObject:
   m_ObjectHideFlags: 0

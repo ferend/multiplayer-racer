@@ -8,7 +8,7 @@ using Unity.Services.Lobbies.Models;
     /// </summary>
     public class LobbyRoomPanel : MonoBehaviour
     {
-        [SerializeField] private float _difficultyDialMaxAngle = 100f;
+        //[SerializeField] private float _difficultyDialMaxAngle = 100f;
 
         [SerializeField] private TMP_Text _nameText, _typeText, _playerCountText;
         //[SerializeField] private Transform _difficultyMeter;

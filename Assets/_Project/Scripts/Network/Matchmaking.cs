@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using _Project.Scripts.Network;
+using _Project.Scripts.Network.Lobby;
 using Unity.Netcode.Transports.UTP;
 using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
@@ -134,10 +135,4 @@ public static class Matchmaking
                     Debug.Log(e);
                 }
         }
-    }
-    public struct LobbyData {
-        public string Name;
-        public int MaxPlayers;
-        public int Difficulty;
-        public int Type;
     }

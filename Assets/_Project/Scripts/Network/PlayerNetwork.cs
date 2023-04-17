@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using _Project.Scripts.Car;
+using _Project.Scripts.Network;
+using Controllers;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -19,11 +21,13 @@ public class PlayerNetwork : NetworkBehaviour
         private float _rotVel;
 
         private ArcadeVehicleController _playerInput;
+        private CameraController _cameraController;
         
 
         private void Awake()
         {
             _playerInput = this.GetComponent<ArcadeVehicleController>();
+            _cameraController = this.GetComponent<CameraController>();
             // If server authority is false we are the client authority.
             var permission = _serverAuth ? NetworkVariableWritePermission.Server : NetworkVariableWritePermission.Owner;
             
@@ -33,6 +37,7 @@ public class PlayerNetwork : NetworkBehaviour
         public override void OnNetworkSpawn()
         {
             base.OnNetworkSpawn();
+            this.gameObject.SetActive(true);
             if (IsOwner)
             {
                 // junk code will fix later
@@ -41,6 +46,7 @@ public class PlayerNetwork : NetworkBehaviour
             if (!IsOwner)
             {
                 _playerInput.enabled = false;
+                _cameraController.playerCamera.enabled = false;
             }
 
         }
@@ -79,7 +85,7 @@ public class PlayerNetwork : NetworkBehaviour
             }
             else
             {
-                TransmitStateServerRPC(state);        // We are telling server to this is our new state can you porpagate it rest of the clients.
+                TransmitStateServerRPC(state);
 
             }
         }
@@ -98,41 +104,3 @@ public class PlayerNetwork : NetworkBehaviour
                 _netState.Value.Rotation.z);
         }
     }
-
-struct PlayerNetworkData : INetworkSerializable
-{
-    private float _x, _z, _y;
-    private short _xRot, _yRot, _zRot; // changed values to short for network optimization
-
-    internal Vector3 Position
-    {
-        get => new Vector3(_x, _y, _z);
-        set
-        {
-            _x = value.x;
-            _z = value.z;
-            _y = value.y;
-        }
-    }
-
-    internal Vector3 Rotation
-    {
-        get => new Vector3(_xRot, _yRot, _zRot);
-        set
-        {
-            _xRot = (short) value.x;
-            _yRot = (short) value.y;
-            _zRot = (short) value.z;
-        }
-    }
-
-    public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
-    {
-        serializer.SerializeValue(ref _x);
-        serializer.SerializeValue(ref _z);
-        serializer.SerializeValue(ref _y);
-        serializer.SerializeValue(ref _yRot);
-        serializer.SerializeValue(ref _xRot);
-        serializer.SerializeValue(ref _zRot);
-    }
-}
