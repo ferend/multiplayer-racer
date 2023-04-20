@@ -1,106 +1,130 @@
-using System.Collections;
-using System.Collections.Generic;
 using _Project.Scripts.Car;
-using _Project.Scripts.Network;
+using _Project.Scripts.Managers;
+using _Project.Scripts.UI;
 using Controllers;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
-public class PlayerNetwork : NetworkBehaviour
+namespace _Project.Scripts.Network
+{
+   public class PlayerNetwork : NetworkBehaviour
+   {
+       // Network variables with write permissions based on server or client authority.
+    private readonly NetworkVariable<Vector3> _netPosition = new NetworkVariable<Vector3>(writePerm: NetworkVariableWritePermission.Owner);
+    private readonly NetworkVariable<Quaternion> _netRotation = new NetworkVariable<Quaternion>(writePerm: NetworkVariableWritePermission.Owner);
+    private NetworkVariable<PlayerNetworkData> _netState;
+    
+    // Components and game objects used by the player.
+    private ArcadeVehicleController _playerInput;
+    private CameraController _cameraController;
+    private Rigidbody _rb;
+    [SerializeField] private PlayerHUD _playerScreen;
+    [SerializeField] private GameObject _sphere;
+    [SerializeField] private GameObject _visual;
+    private Transform[] _spawnPositions;
+    
+    private Vector3 _vel;
+    private float _rotVel;
+    private bool _serverAuth;
+
+    private void OnEnable()
     {
-        // Client author. and server authr.
-        private readonly NetworkVariable<Vector3> _netPosition = new NetworkVariable<Vector3>(writePerm: NetworkVariableWritePermission.Owner);
-        private readonly NetworkVariable<Quaternion> _netRotation = new NetworkVariable<Quaternion>(writePerm: NetworkVariableWritePermission.Owner);
-        private NetworkVariable<PlayerNetworkData> _netState;
+        NetworkManager.Singleton.SceneManager.OnLoadComplete += SceneManagerOnLoadComplete;
+    }
 
-        private bool _serverAuth;
-        
-        
-        private Vector3 _vel;
-        private float _rotVel;
+    private void OnDisable()
+    {
+        NetworkManager.Singleton.SceneManager.OnLoadComplete -= SceneManagerOnLoadComplete;
+    }
+    
+    private void Awake()
+    {
+        _playerInput = GetComponent<ArcadeVehicleController>();
+        _cameraController = GetComponent<CameraController>();
+        _rb = GetComponent<Rigidbody>();
+        var permission = _serverAuth ? NetworkVariableWritePermission.Server : NetworkVariableWritePermission.Owner;
+        _netState = new NetworkVariable<PlayerNetworkData>(writePerm: permission);
+    }
 
-        private ArcadeVehicleController _playerInput;
-        private CameraController _cameraController;
-        
+    public override void OnNetworkSpawn()
+    {
+        base.OnNetworkSpawn();
+        _playerInput.enabled = IsOwner;
+        _cameraController.playerCamera.enabled = IsOwner;
+    }
 
-        private void Awake()
+    private void SceneManagerOnLoadComplete(ulong clientId, string sceneName, LoadSceneMode loadSceneMode)
+    {
+        if (sceneName != "Game") return;
+        _playerScreen = Services.Instance.UIManager.playerHUD;
+        _spawnPositions = Services.Instance.GameFlowManager.positions;
+        _rb.isKinematic = false;
+        MoveToRandomTransform();
+        ActivatePlayerScreen();
+        ActivateGameObjects();
+    }
+
+    private void MoveToRandomTransform()
+    {
+        int randomIndex = Random.Range(0, _spawnPositions.Length);
+        Transform randomTransform = _spawnPositions[randomIndex];
+        transform.position = randomTransform.position;
+        transform.rotation = randomTransform.rotation;
+    }
+
+    private void ActivatePlayerScreen()
+    {
+        _playerScreen.OpenScreen();
+    }
+
+    private void ActivateGameObjects()
+    {
+        _sphere.SetActive(true);
+        _visual.SetActive(true);
+    }
+
+    private void Update()
+    {
+        if (IsOwner)
         {
-            _playerInput = this.GetComponent<ArcadeVehicleController>();
-            _cameraController = this.GetComponent<CameraController>();
-            // If server authority is false we are the client authority.
-            var permission = _serverAuth ? NetworkVariableWritePermission.Server : NetworkVariableWritePermission.Owner;
-            
-            _netState = new NetworkVariable<PlayerNetworkData>(writePerm: permission);
+            TransmitState();
         }
-
-        public override void OnNetworkSpawn()
+        else
         {
-            base.OnNetworkSpawn();
-            this.gameObject.SetActive(true);
-            if (IsOwner)
-            {
-                // junk code will fix later
-            }
-
-            if (!IsOwner)
-            {
-                _playerInput.enabled = false;
-                _cameraController.playerCamera.enabled = false;
-            }
-
+            ConsumeState();
         }
+    }
 
-        /// <summary>
-        /// TODO: removing works need to open lobby screens
-        /// </summary>
-        public override void OnNetworkDespawn()
+    private void TransmitState()
+    {
+        var state = new PlayerNetworkData()
         {
-            base.OnNetworkDespawn();
-        }
-
-        void Update()
-        {
-            if (IsOwner)
-            {
-                TransmitState();
-            }
-            else
-            {
-                ConsumeState();
-            }
-            
-        }
-
-        private void TransmitState()
-        {
-            var state = new PlayerNetworkData()
-            {
-                Position = transform.position,
-                Rotation = transform.rotation.eulerAngles
-            };
-            if (IsServer || !_serverAuth)
-            {
-                _netState.Value = state;
-            }
-            else
-            {
-                TransmitStateServerRPC(state);
-
-            }
-        }
-
-        // RPC: Remote procedure call. If run on server update all clients. Can only run in server but triggered by clients.
-        [ServerRpc]
-        private void TransmitStateServerRPC(PlayerNetworkData state)
+            Position = transform.position,
+            Rotation = transform.rotation.eulerAngles
+        };
+        if (IsServer || !_serverAuth)
         {
             _netState.Value = state;
         }
-
-        private void ConsumeState()
+        else
         {
-            transform.position = Vector3.SmoothDamp(transform.position, _netState.Value.Position, ref _vel, 0.1f);
-            transform.rotation = Quaternion.Euler(_netState.Value.Rotation.x, _netState.Value.Rotation.y,
-                _netState.Value.Rotation.z);
+            TransmitStateServerRPC(state);
         }
     }
+
+    [ServerRpc]
+    private void TransmitStateServerRPC(PlayerNetworkData state)
+    {
+        _netState.Value = state;
+    }
+
+    private void ConsumeState()
+    {
+        var position = Vector3.SmoothDamp(transform.position, _netState.Value.Position, ref _vel, 0.1f);
+        var rotation = Quaternion.Euler(_netState.Value.Rotation);
+        transform.SetPositionAndRotation(position, rotation);
+    }
+   }
+}

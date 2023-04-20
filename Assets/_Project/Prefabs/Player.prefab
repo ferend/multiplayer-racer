@@ -226,7 +226,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5291503808066334378
 Transform:
   m_ObjectHideFlags: 0
@@ -15069,7 +15069,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5291503809813976660
 Transform:
   m_ObjectHideFlags: 0
@@ -15126,7 +15126,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: -0.24882591, z: 0.021999955}
+  m_ConnectedAnchor: {x: 0, y: -0.24882591, z: 0.021999836}
   m_UseSpring: 0
   m_Spring:
     spring: 10000
@@ -20201,7 +20201,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 40
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 1
   m_Constraints: 80
   m_CollisionDetection: 1
@@ -20425,6 +20425,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4308f8a01fb059645a9082c15c252e60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerScreen: {fileID: 0}
+  _sphere: {fileID: 5291503809813976656}
+  _visual: {fileID: 5291503808066334379}
 --- !u!114 &93549108024724773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20792,7 +20795,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7621647087800712821}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}

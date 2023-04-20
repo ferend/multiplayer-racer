@@ -611,7 +611,7 @@ public class UltimateJoystick : MonoBehaviour, IPointerDownHandler, IDragHandler
 	{
 		if( !UltimateJoysticks.ContainsKey( joystickName ) )
 		{
-			Debug.LogWarning( "Ultimate Joystick - No Ultimate Joystick has been registered with the name: " + joystickName + "." );
+			//Debug.LogWarning( "Ultimate Joystick - No Ultimate Joystick has been registered with the name: " + joystickName + "." );
 			return false;
 		}
 		return true;

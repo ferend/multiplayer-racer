@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
+using _Project.Scripts.Managers;
 using ParrelSync;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
@@ -11,7 +13,7 @@ namespace _Project.Scripts.Network
     {
         public async void LoginAnonymously() {
             await Authentication.Login();
-            SceneManager.LoadSceneAsync("_Project/Scenes/Game");
+            SceneManager.LoadSceneAsync("_Project/Scenes/Lobby");
         }
     }
     
