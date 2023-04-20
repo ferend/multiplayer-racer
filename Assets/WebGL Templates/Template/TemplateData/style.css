@@ -1,0 +1,92 @@
+:root {
+    touch-action: pan-x pan-y;
+    height: 100%
+}
+
+body {
+    background: {{{ BACKGROUND || '#000' }}};
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    padding: 0;
+    margin: 0;
+}
+
+div#gameContainer {
+    background: transparent !important;
+    position: absolute;
+}
+
+div#gameContainer canvas {
+    position: absolute;
+}
+
+div#gameContainer canvas[data-pixel-art="true"] {
+    position: absolute;
+    image-rendering: optimizeSpeed;
+    image-rendering: -webkit-crisp-edges;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges;
+    image-rendering: crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: optimize-contrast;
+    image-rendering: pixelated;
+    -ms-interpolation-mode: nearest-neighbor;
+}
+
+#unity-container { 
+    position: absolute;
+}
+#unity-canvas { 
+    background: {{{ BACKGROUND_COLOR }}} 
+}
+
+#unity-loading-bar {
+    background: url("Background.png") no-repeat center;
+    background-size: cover;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    top: 0;
+    left: 0;
+}
+#unity-logo {
+    width: 200px;
+    height: 130px;
+    background: url('webgl-logo-2.png') no-repeat center;
+    background-size: contain;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%)
+
+}
+#unity-progress-bar-empty {
+    width: 10%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    top: 85%;
+    transform: translate(-50%, -50%);
+    background: url('progress-bar-empty-{{{ SPLASH_SCREEN_STYLE.toLowerCase() }}}.png') no-repeat center;
+    background-size: cover;
+}
+#unity-progress-bar-full {
+    width: 0%;
+    height: 20px;
+    background: cyan;
+    margin: 1px;
+}
+#unity-footer { position: relative }
+.unity-mobile #unity-footer { display: none }
+#unity-webgl-logo { float:left; width: 204px; height: 38px; background: url('webgl-logo.png') no-repeat center }
+#unity-build-title { float: right; margin-right: 10px; line-height: 38px; font-family: arial; font-size: 18px }
+#unity-fullscreen-button { float: right; width: 38px; height: 38px; background: url('fullscreen-button.png') no-repeat center }
+#unity-mobile-warning { position: absolute; left: 50%; top: 5%; transform: translate(-50%); background: white; padding: 10px; display: none }
