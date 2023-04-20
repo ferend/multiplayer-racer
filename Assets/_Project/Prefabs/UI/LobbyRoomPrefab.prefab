@@ -419,7 +419,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6af275761524f1c8e716cfef07eca8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _difficultyDialMaxAngle: 100
   _nameText: {fileID: 2580550000781329247}
   _typeText: {fileID: 2580550002009872900}
   _playerCountText: {fileID: 2580550000289594493}
@@ -440,7 +439,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2580550002009872901
 RectTransform:
   m_ObjectHideFlags: 0

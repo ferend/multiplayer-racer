@@ -1,5 +1,4 @@
-﻿using UltimateJoystickExample.Spaceship;
-using UnityEngine;
+﻿using UnityEngine;
 using Utility;
 
 namespace _Project.Scripts.Managers

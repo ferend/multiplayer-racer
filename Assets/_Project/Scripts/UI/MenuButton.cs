@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -20,13 +21,13 @@ namespace UI
         public void OnPointerUp(PointerEventData eventData)
         {
             // if(animated)
-            // rect.DOShakeScale(1f, 0.1f);
+             rect.DOShakeScale(1f, 0.1f);
         }
 
         public void OnPointerDown(PointerEventData eventData)
         {
             // if (animated)
-            // rect.DOShakeScale(0.9f, 0.1f);
+             rect.DOShakeScale(0.9f, 0.1f);
         }
     }
 }
