@@ -22,13 +22,13 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _SkyExponent1: 11.07
+    - _SkyExponent1: 15.59
     - _SkyExponent2: 3
-    - _SkyIntensity: 0.46
+    - _SkyIntensity: 0.76
     - _SunAlpha: 550
     - _SunAltitude: 38
-    - _SunAzimuth: 20
-    - _SunBeta: 1
+    - _SunAzimuth: 11.44
+    - _SunBeta: 2.17
     - _SunIntensity: 2
     m_Colors:
     - _SkyColor1: {r: 0.36999997, g: 0.52, b: 0.73, a: 0}
