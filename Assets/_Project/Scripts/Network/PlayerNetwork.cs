@@ -2,6 +2,7 @@ using _Project.Scripts.Car;
 using _Project.Scripts.Managers;
 using _Project.Scripts.UI;
 using Controllers;
+using TMPro;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -23,6 +24,8 @@ namespace _Project.Scripts.Network
     [SerializeField] private PlayerHUD _playerScreen;
     [SerializeField] private GameObject _sphere;
     [SerializeField] private GameObject _visual;
+    [SerializeField] private TextMeshProUGUI _playerName;
+
     private Transform[] _spawnPositions;
     
     private Vector3 _vel;
@@ -53,6 +56,7 @@ namespace _Project.Scripts.Network
         base.OnNetworkSpawn();
         _playerInput.enabled = IsOwner;
         _cameraController.playerCamera.enabled = IsOwner;
+        _playerName.text = "Player " + NetworkManager.Singleton.LocalClientId;
     }
 
     private void SceneManagerOnLoadComplete(ulong clientId, string sceneName, LoadSceneMode loadSceneMode)
