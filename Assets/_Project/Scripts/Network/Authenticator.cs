@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
 using _Project.Scripts.Managers;
+#if UNITY_EDITOR
 using ParrelSync;
+#endif
 using Unity.Services.Authentication;
 using Unity.Services.Core;
 using UnityEngine;

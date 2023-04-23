@@ -46,8 +46,7 @@ Assets/StreamingAssets/crashlytics-build.properties
 
 *.log
 
-Assets/_Project/Scripts/Utility
-Assets/_Project/Scripts/Toolkit
+
 Assets/Arcade Vehicle physics
 Assets/Ultimate Joystick
 Assets/Arcade Vehicle physics
